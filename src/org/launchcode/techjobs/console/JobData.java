@@ -72,13 +72,13 @@ public class JobData {
     
     ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
     if (column.equals("all")) {
-      HashMap<String, String> aJob = allJobs.get(0);
-      ArrayList<String> columns = new ArrayList<String> (aJob.keySet());
-      for (String aColumn: columns) {
-        for (HashMap<String, String> row : allJobs) {
+      for (HashMap<String, String> row : allJobs) {
+        ArrayList<String> columns = new ArrayList<String> (row.keySet());
+        for (String aColumn: columns) {
           String aValue = row.get(aColumn).toLowerCase();
           if (aValue.contains(value)) {
             jobs.add(row);
+            break;
           }
         }
       }
